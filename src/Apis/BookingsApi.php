@@ -229,7 +229,10 @@ class BookingsApi extends BaseApi
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v2/bookings/{booking_id}')
             ->auth('global')
-            ->parameters(TemplateParam::init('booking_id', $bookingId));
+            ->parameters(
+                TemplateParam::init('booking_id', $bookingId),
+                HeaderParam::init('Content-Type', 'application/json')
+            );
 
         $_resHandler = $this->responseHandler()->type(RetrieveBookingResponse::class)->returnApiResponse();
 
